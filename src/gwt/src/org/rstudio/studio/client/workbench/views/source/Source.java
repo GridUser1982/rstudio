@@ -4107,8 +4107,8 @@ public class Source implements InsertSourceHandler,
             (activeEditor_ != null) &&
             (activeEditor_.getPath() != null) &&
             ((activeEditor_.getExtendedFileType() != null &&
-              activeEditor_.getExtendedFileType() .startsWith(SourceDocument.XT_SHINY_PREFIX)) ||
-              activeEditor_.getExtendedFileType() == SourceDocument.XT_RMARKDOWN ||
+              activeEditor_.getExtendedFileType().startsWith(SourceDocument.XT_SHINY_PREFIX)) ||
+              activeEditor_.getExtendedFileType().startsWith(SourceDocument.XT_RMARKDOWN_PREFIX) ||
               activeEditor_.getExtendedFileType() == SourceDocument.XT_PLUMBER_API);
       commands_.rsconnectDeploy().setVisible(rsCommandsAvailable);
       if (activeEditor_ != null)
@@ -4138,7 +4138,7 @@ public class Source implements InsertSourceHandler,
       boolean rmdCommandsAvailable = 
             session_.getSessionInfo().getRMarkdownPackageAvailable() &&
             (activeEditor_ != null) &&
-            activeEditor_.getExtendedFileType() == SourceDocument.XT_RMARKDOWN;
+            activeEditor_.getExtendedFileType().startsWith(SourceDocument.XT_RMARKDOWN_PREFIX);
       commands_.editRmdFormatOptions().setVisible(rmdCommandsAvailable);
       commands_.editRmdFormatOptions().setEnabled(rmdCommandsAvailable);
    }

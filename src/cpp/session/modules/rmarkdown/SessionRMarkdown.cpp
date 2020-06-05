@@ -928,7 +928,14 @@ std::string onDetectRmdSourceType(
                                        "<!-- rmarkdown v1 -->") &&
           rmarkdownPackageAvailable())
       {
-         return "rmarkdown";
+         if (boost::algorithm::icontains(pDoc->contents(), "html_notebook"))
+         {
+            return "rmarkdown-notebook";
+         }
+         else
+         {
+            return "rmarkdown-document";
+         }
       }
    }
    return std::string();
